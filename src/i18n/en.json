@@ -1,0 +1,379 @@
+{
+  "meta": {
+    "home": {
+      "title": "Dahab Bay Hotel — between the mountains and the sea, Dahab",
+      "desc": "A small beachfront hotel on Blue Hole Road, north of Dahab: a private beach with hammocks, a pool, a restaurant, and rooms with sea, pool or mountain views. Reserve direct on WhatsApp."
+    },
+    "rooms": {
+      "title": "Rooms and availability — Dahab Bay Hotel",
+      "desc": "Nine kinds of room, from a single to a two-bedroom apartment: sea-view doubles and family rooms, pool-view rooms and garden rooms. Check availability and reserve on WhatsApp."
+    },
+    "gallery": {
+      "title": "Photos — Dahab Bay Hotel",
+      "desc": "The beach at sunrise, the pool, the restaurant, the courtyard under the mountain and every kind of room."
+    },
+    "enquire": {
+      "title": "Reserve — Dahab Bay Hotel",
+      "desc": "Your rooms, your details, and the request sent to the hotel on WhatsApp. Nothing is charged on the website."
+    },
+    "notfound": {
+      "title": "Page not found — Dahab Bay Hotel",
+      "desc": "That page does not exist."
+    },
+    "dahab": {
+      "title": "Dahab from the hotel — Blue Hole, Eel Garden, the Mamsha",
+      "desc": "How far everything is from the hotel: Assalah, Eel Garden, the Lighthouse and the Mamsha, the Lagoon, the Blue Hole, Ras Abu Galum, St Catherine and Sharm El Sheikh airport."
+    }
+  },
+  "nav": {
+    "skip": "Skip to content",
+    "home": "Home",
+    "rooms": "Rooms",
+    "gallery": "Photos",
+    "enquire": "Reserve",
+    "menu": "Menu",
+    "close": "Close",
+    "lang": "العربية",
+    "langLabel": "Switch language",
+    "whatsapp": "WhatsApp",
+    "call": "Call",
+    "contact": "Contact",
+    "dahab": "Dahab"
+  },
+  "hero": {
+    "eyebrow": "Blue Hole Road · Dahab · South Sinai",
+    "title": "Between the mountains and the sea, on the quiet road north of Dahab",
+    "lead": "A small hotel on its own stretch of beach, with the Sinai mountains directly behind it and the Gulf of Aqaba in front. It is north of town on the road to the Blue Hole, away from the noise of the Mamsha: guests come back here to swim, eat on the beach and sleep.",
+    "cta": "Enquire on WhatsApp",
+    "ctaRooms": "See the rooms",
+    "photoCaption": "The hotel beach at sunrise"
+  },
+  "sections": {
+    "rooms": "The rooms",
+    "gallery": "Photos",
+    "reviews": "In guests' words",
+    "section": "From the mountain to the water",
+    "beach": "The beach",
+    "food": "Breakfast, the restaurant and the beach café",
+    "dahab": "Dahab from here",
+    "practical": "The practical part",
+    "enquire": "Enquire"
+  },
+  "rooms": {
+    "intro": "Nine kinds of room in two blocks around the courtyard and the pool. All are air-conditioned with a private bathroom and free Wi‑Fi. The sea-view rooms face the beach; the others look over the pool, the mountain or the garden.",
+    "all": "All rooms",
+    "enquireFor": "Enquire about the {room}",
+    "double-sea-view": {
+      "name": "Double room, sea view",
+      "short": "A queen bed and a terrace on the sea",
+      "desc": "A queen bed, a terrace with the sea in front, a kettle, a fridge and a flat-screen TV. 23 m². The room most guests ask for."
+    },
+    "family-sea-view": {
+      "name": "Family room, sea view",
+      "short": "A queen bed, two singles and a sofa bed, terrace on the sea",
+      "desc": "The largest room, 35 m²: a queen bed, two single beds and a sofa bed in two sleeping areas, with glass doors onto a terrace and the sea."
+    },
+    "deluxe-double": {
+      "name": "Deluxe double room",
+      "short": "Two single beds, balcony over the pool",
+      "desc": "Two single beds, a balcony over the pool with the mountain behind, a kettle, a fridge and a flat-screen TV. 20 m². A child can share."
+    },
+    "single": {
+      "name": "Single room",
+      "short": "One bed, balcony over the pool",
+      "desc": "One wide bed, a carved wardrobe, a kettle, a fridge and a balcony over the pool. 20 m²."
+    },
+    "triple": {
+      "name": "Comfort triple room",
+      "short": "Three single beds, on the ground floor",
+      "desc": "Three single beds on the ground floor, a terrace by the pool, a kettle, a fridge and a flat-screen TV. 24 m²."
+    },
+    "quadruple": {
+      "name": "Comfort quadruple room",
+      "short": "A double and two singles, doors onto the garden",
+      "desc": "A double bed and two single beds, with glass doors straight onto the garden courtyard and its own entrance. 30 m²."
+    },
+    "economy-double": {
+      "name": "Economy double room",
+      "short": "Two beds, a window on the courtyard",
+      "desc": "The simplest room, 18 m²: two beds, a wardrobe, a wide window on the courtyard garden and a bathroom with a bathtub."
+    },
+    "family-studio": {
+      "name": "Family studio",
+      "short": "A double, a single and a sofa in one large room",
+      "desc": "One large room of 30 m² with a double bed, a single bed and a sitting area with a sofa, and its own entrance."
+    },
+    "apartment": {
+      "name": "Apartment",
+      "short": "Two bedrooms, a living room and a terrace",
+      "desc": "Two separate bedrooms, one with a double bed and one with two singles, a living room and a bathroom, with its own entrance. 30 m²."
+    }
+  },
+  "gallery": {
+    "intro": "All 64 photos from the hotel's listing: the beach, the house, the pool, the restaurant and every kind of room.",
+    "all": "All",
+    "room": "Rooms",
+    "house": "The hotel",
+    "counter": "{n} / {total}",
+    "open": "Open photo",
+    "close": "Close",
+    "prev": "Previous photo",
+    "next": "Next photo",
+    "drag": "Drag",
+    "bathroom": "Bathrooms",
+    "beach": "The beach",
+    "pool": "Pool",
+    "restaurant": "Restaurant"
+  },
+  "reviews": {
+    "title": "In guests' words",
+    "source": "Reviews on Google",
+    "google": "Google",
+    "booking": "Booking.com",
+    "outOf": "out of {n}",
+    "count": "{n} reviews"
+  },
+  "enquire": {
+    "waIntro": "Hello Dahab Bay Hotel, I'd like to enquire about a stay."
+  },
+  "footer": {
+    "address": "Blue Hole Road, Dahab, South Sinai 46617, Egypt",
+    "rights": "Dahab Bay Hotel",
+    "maps": "Google Maps",
+    "checkin": "Check-in from {in} · check-out by {out}",
+    "languages": "We speak {langs}",
+    "where": "Where we are"
+  },
+  "notfound": {
+    "title": "This page is not here",
+    "text": "The link may be old. The rooms and the photos are one tap away.",
+    "home": "Back to the start"
+  },
+  "common": {
+    "photoOf": "Photo of {what}",
+    "section": "Section",
+    "back": "Back"
+  },
+  "bk": {
+    "search": "Search",
+    "checkAvail": "Check availability",
+    "guests": "Guests",
+    "checkin": "Check-in",
+    "checkout": "Check-out",
+    "adults": "Adults",
+    "children": "Children",
+    "childrenHint": "Ages 0–12",
+    "done": "Done",
+    "adultsN": "1 adult|{n} adults",
+    "childrenN": "1 child|{n} children",
+    "noChildren": "no children",
+    "nightsN": "1 night|{n} nights",
+    "roomsN": "1 room|{n} rooms",
+    "photosN": "1 photo|{n} photos",
+    "guestsN": "1 guest|{n} guests",
+    "availTitle": "Availability",
+    "availFor": "{nights} · {in} – {out} · {party}",
+    "changeSearch": "Change search",
+    "colRoom": "Room type",
+    "colSleeps": "Sleeps",
+    "colPrice": "Price",
+    "colChoices": "Your choices",
+    "colSelect": "Select rooms",
+    "price": "On request",
+    "priceNote": "Today's rate comes back on WhatsApp",
+    "priceUsd": "US${n}",
+    "priceNight": "per night, confirmed on WhatsApp",
+    "chBreakfast": "Breakfast served in the restaurant",
+    "chNoCard": "No payment on this website",
+    "chConfirm": "Confirmed on WhatsApp",
+    "reserve": "I'll reserve",
+    "reserveNote": "Nothing is charged on this website",
+    "selected": "{rooms} for {nights}",
+    "selNone": "Choose a room to continue",
+    "capacity": "These rooms sleep {n}, and you are {m}. Add a room or change the number of guests.",
+    "pickRoom": "Choose at least one room.",
+    "sleepsN": "Sleeps {n}",
+    "roomDetails": "Room details",
+    "privateBath": "Private bathroom",
+    "beds": {
+      "double": "1 double bed|{n} double beds",
+      "queen": "1 queen bed|{n} queen beds",
+      "single": "1 single bed|{n} single beds",
+      "sofa": "1 sofa bed|{n} sofa beds"
+    },
+    "f": {
+      "sea": "Sea view",
+      "pool": "Pool view",
+      "mountain": "Mountain view",
+      "garden": "Garden view",
+      "terrace": "Terrace or balcony",
+      "living": "Sitting area",
+      "bedrooms": "Two bedrooms",
+      "sofa": "Sofa",
+      "ground": "Ground floor",
+      "entrance": "Own entrance",
+      "kettle": "Kettle",
+      "fridge": "Fridge",
+      "tv": "Flat-screen TV",
+      "safe": "Safe",
+      "net": "Mosquito net",
+      "ac": "Air conditioning",
+      "wifi": "Free Wi‑Fi",
+      "towels": "Towels and linen"
+    },
+    "steps": [
+      "Your selection",
+      "Your details",
+      "Final step"
+    ],
+    "yourBooking": "Your booking details",
+    "checkinFrom": "From {t}",
+    "checkoutUntil": "Until {t}",
+    "totalStay": "Total length of stay",
+    "youSelected": "You selected",
+    "change": "Change your selection",
+    "editDates": "Change dates",
+    "detailsTitle": "Enter your details",
+    "detailsLead": "Almost done. Fill in the details below; the next step shows the request before it goes.",
+    "first": "First name",
+    "last": "Last name",
+    "email": "Email address",
+    "optional": "optional",
+    "phone": "Mobile number, with country code",
+    "phoneHint": "The hotel replies on WhatsApp to this number.",
+    "arrival": "Your arrival time",
+    "arrivalHint": "Rooms are ready from {t}. The desk is open day and night.",
+    "arrivalUnknown": "I don't know yet",
+    "arrivalLate": "After midnight",
+    "pickup": "Airport pickup",
+    "pickupYes": "Pick me up from Sharm El Sheikh airport (extra charge)",
+    "flight": "Flight number and landing time",
+    "requests": "Special requests",
+    "requestsPh": "A sea-view room, a cot, a late arrival, diving…",
+    "requestsHint": "Requests depend on availability; the hotel will say what it can do.",
+    "next": "Next: final step",
+    "back": "Back",
+    "finalTitle": "Check your request",
+    "finalLead": "Nothing is charged. When you send this, WhatsApp opens with the request written out; the hotel replies with availability and the rate, and the booking is confirmed when they confirm it.",
+    "send": "Send request on WhatsApp",
+    "copy": "Copy the request",
+    "copied": "Copied",
+    "or": "or call {phone}",
+    "errRooms": "Choose at least one room.",
+    "errName": "Please enter your first and last name.",
+    "errPhone": "Please enter a mobile number with the country code, e.g. +44 7700 900123.",
+    "errEmail": "That email address doesn't look right.",
+    "wa": {
+      "intro": "Hello Dahab Bay Hotel, I'd like to book:",
+      "in": "Check-in",
+      "out": "Check-out",
+      "stay": "Stay",
+      "guests": "Guests",
+      "rooms": "Rooms",
+      "name": "Name",
+      "phone": "Phone",
+      "email": "Email",
+      "arrival": "Arrival",
+      "pickup": "Airport pickup",
+      "req": "Requests",
+      "from": "Sent from the website"
+    },
+    "hl": {
+      "title": "Property highlights",
+      "beach": "Private beach with shade, hammocks and a café",
+      "quiet": "Quiet: north of town, away from the Mamsha",
+      "pool": "Outdoor pool in the courtyard",
+      "desk": "Front desk open 24 hours",
+      "pickup": "Airport transfer on request"
+    },
+    "fac": {
+      "title": "Most popular facilities",
+      "wifi": "Free Wi‑Fi",
+      "beach": "Private beach",
+      "pool": "Outdoor pool",
+      "restaurant": "Restaurant",
+      "bar": "Bar",
+      "parking": "Free parking",
+      "shuttle": "Airport transfer",
+      "desk": "24-hour front desk"
+    },
+    "showMap": "Show on map",
+    "reserveBtn": "Reserve",
+    "allPhotos": "All {n} photos",
+    "reviewWord": "Good",
+    "roomPage": {
+      "facilities": "In the room",
+      "bedsTitle": "Beds",
+      "reserveThis": "Reserve this room",
+      "others": "Other rooms"
+    },
+    "endLead": "Choose your dates and rooms, add your details, and the request goes to the hotel on WhatsApp. Nothing is charged on this website; the hotel replies with availability and the rate.",
+    "sizeM": "{n} m²"
+  },
+  "sunrise": {
+    "today": "Sunrise over the gulf today at {time}, from the hotel beach.",
+    "note": "The beach faces east: the sun comes up out of the sea."
+  },
+  "section": {
+    "text": "The whole hotel fits in the strip between the road and the sea. The mountain rises behind the road; the rooms stand in two white blocks around a courtyard and the pool; the restaurant looks over the lawn; then the beach café, the hammocks and the water.",
+    "mountain": "Sinai mountains",
+    "road": "Blue Hole Road",
+    "rooms": "Rooms and courtyard",
+    "pool": "Pool",
+    "restaurant": "Restaurant",
+    "beach": "Beach café and hammocks",
+    "reef": "Reef",
+    "sea": "Gulf of Aqaba",
+    "far": "Saudi coast",
+    "alt": "A cross-section from the mountain to the sea: the mountain, the road, the room blocks around the courtyard and pool, the restaurant, the beach with its shelter and hammock, the reef and the gulf."
+  },
+  "beach": {
+    "text": "A private stretch of shore with a timber shelter, pallet sofas, swings and a hammock at the water. Tea comes down from the kitchen. The beach faces east, so the sun rises out of the sea in front of you, and in the evening the mountains behind turn red."
+  },
+  "food": {
+    "text": "An Egyptian breakfast is served in the restaurant, at tables beside a window on the sea. The kitchen cooks Middle Eastern dishes, seafood and pizza through the day, and there is a bar. Food and tea are also served at the café on the beach."
+  },
+  "dahab": {
+    "intro": "The hotel is on Blue Hole Road, about a mile north of where the town begins. South along the shore are Assalah, Eel Garden and the Mamsha; north, the road ends at the Blue Hole. Distances are straight lines from the hotel.",
+    "near": "Along the coast",
+    "far": "Further out",
+    "distance": "{km} km",
+    "onFoot": "{min} min on foot",
+    "byCar": "{min} min by car",
+    "directions": "Directions",
+    "open": "Open in Google Maps",
+    "howTo": "How to reach us",
+    "byAir": "From Sharm El Sheikh airport: about an hour and a quarter by road. The hotel arranges a transfer for a fee; tell us your flight.",
+    "byTaxi": "In Dahab: any taxi knows Blue Hole Road. From the Mamsha it is a few minutes by car.",
+    "onFootText": "On foot: guests walk to the shops of Assalah along the shore."
+  },
+  "practical": {
+    "intro": "What the listings say, in one place.",
+    "items": [
+      [
+        "Rooms",
+        "Air conditioning and a private bathroom in every room; free Wi‑Fi. The upper floor is reached by stairs."
+      ],
+      [
+        "Times",
+        "Check-in from 12:00, check-out by 10:00. The front desk is open day and night."
+      ],
+      [
+        "Getting here",
+        "Airport transfer from Sharm El Sheikh for a fee. Free parking at the hotel."
+      ],
+      [
+        "The sea",
+        "A private beach with shade, hammocks and a café. Snorkelling from the shore; diving and trips arranged at the desk."
+      ],
+      [
+        "Languages",
+        "English, Arabic and French."
+      ],
+      [
+        "Good to know",
+        "Pets are accepted on request. Children of all ages are welcome."
+      ]
+    ]
+  }
+}

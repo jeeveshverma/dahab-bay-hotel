@@ -1,0 +1,58 @@
+---
+/** Dahab from the hotel: what is along the coast and how far, and how to reach the hotel. */
+import Layout from '../components/Layout.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import Places from '../components/Places.astro';
+import Section from '../components/Section.astro';
+import { photo } from '../data/photos';
+import { path, useT, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const { t } = useT(lang);
+---
+<Layout lang={lang} page="dahab" title={t('meta.dahab.title')} desc={t('meta.dahab.desc')}>
+  <section class="dh-head">
+    <div class="wrap dh-head-in">
+      <div class="section-head">
+        <span class="num">{t('nav.dahab')}</span>
+        <h1>{t('sections.dahab')}</h1>
+        <p class="lead">{t('dahab.intro')}</p>
+      </div>
+      <div class="dh-photo"><Img id="beach-shore" lang={lang} priority ratio="4 / 3" sizes="(min-width: 960px) 46vw, 100vw" /><p class="caption">{photo('beach-shore').caption![lang]}</p></div>
+    </div>
+  </section>
+  <section class="section dh-list">
+    <div class="wrap"><Places lang={lang} /></div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head rv"><h2>{t('sections.section')}</h2><p class="lead">{t('section.text')}</p></div>
+      <div class="rv"><Section lang={lang} /></div>
+    </div>
+  </section>
+  <section class="section dh-how">
+    <div class="wrap dh-how-in">
+      <h2 class="rv">{t('dahab.howTo')}</h2>
+      <ul class="rv rv-d1">
+        <li><Icon name="plane" /> <span>{t('dahab.byAir')}</span></li>
+        <li><Icon name="car" /> <span>{t('dahab.byTaxi')}</span></li>
+        <li><Icon name="pin" /> <span>{t('dahab.onFootText')}</span></li>
+      </ul>
+      <p class="rv"><a class="btn btn-lg" href={`${path(lang, 'rooms')}#availability`}>{t('bk.checkAvail')} <Icon name="arrowRight" size={18} class="rtl-flip" /></a></p>
+    </div>
+  </section>
+</Layout>
+<style>
+  .dh-head { padding-top: calc(var(--header-h) + 32px); padding-bottom: clamp(32px, 5vw, 64px); }
+  .dh-head-in { display: grid; gap: 24px; }
+  .dh-head .section-head { margin: 0; }
+  .dh-head h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
+  .dh-photo .caption { margin: 10px 0 0; }
+  @media (min-width: 960px) { .dh-head-in { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; } }
+  .dh-list, .dh-how { background: var(--paper); }
+  .dh-how-in { display: grid; gap: 18px; max-width: 52em; }
+  .dh-how ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .dh-how li { display: flex; gap: 12px; align-items: flex-start; }
+  .dh-how li :global(.icon) { color: var(--gold-text); flex: none; margin-top: 3px; }
+</style>

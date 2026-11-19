@@ -1,0 +1,52 @@
+---
+/**
+ * The coast as a list, in order of distance from the hotel: the walkable shore first, then the
+ * places you drive or sail to. Distances are straight lines and the minutes are computed from
+ * them (src/lib/geo.ts); the far places show kilometres only, because mountain roads make a
+ * straight-line time meaningless.
+ */
+import { useT, digits, type Lang } from '../i18n';
+import { PLACES } from '../data/places';
+import { SITE } from '../data/site';
+import { fromHotel, fmtKm } from '../lib/geo';
+import Icon from './Icon.astro';
+interface Props { lang: Lang; compact?: boolean }
+const { lang, compact = false } = Astro.props;
+const { t } = useT(lang);
+const all = PLACES.map((p) => { const g = fromHotel(p.at); return { ...p, ...g }; }).sort((a, b) => a.km - b.km);
+const groups = [['near', all.filter((p) => p.kind === 'near')], ['far', all.filter((p) => p.kind === 'far')]] as const;
+const when = (p: (typeof all)[number]) => (p.kind === 'far' ? '' : p.mode === 'foot' ? t('dahab.onFoot', { min: digits(p.min, lang) }) : t('dahab.byCar', { min: digits(p.min, lang) }));
+---
+<div class:list={['pl', compact && 'pl-compact']}>
+  {groups.map(([k, items]) => (
+    <div class="pl-group">
+      <h3>{t(`dahab.${k}`)}</h3>
+      <ol>
+        {items.map((p) => (
+          <li>
+            <span class="pl-km">{t('dahab.distance', { km: fmtKm(p.km, lang) })}</span>
+            <div><strong>{p.name[lang]}</strong>{when(p) && <span class="pl-min">{when(p)}</span>}{!compact && <p>{p.blurb[lang]}</p>}</div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  ))}
+  <p class="pl-links">
+    <a class="btn btn-gold" href={SITE.mapsUrl} target="_blank" rel="noopener"><Icon name="pin" /> {t('dahab.open')}</a>
+    <a class="btn btn-ghost" href={SITE.directionsUrl} target="_blank" rel="noopener">{t('dahab.directions')} <Icon name="arrowUpRight" size={16} /></a>
+  </p>
+</div>
+<style>
+  .pl { display: grid; gap: 28px; }
+  .pl-group h3 { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-text); font-weight: 700; margin-bottom: 6px; }
+  html[lang='ar'] .pl-group h3 { letter-spacing: 0; font-size: 0.95rem; }
+  ol { list-style: none; margin: 0; padding: 0; }
+  li { display: grid; grid-template-columns: 5.2em 1fr; gap: 14px; align-items: baseline; padding-block: 12px; border-top: 1px solid var(--line); }
+  .pl-km { font-family: var(--display); font-size: 1.5rem; font-weight: 600; color: var(--gold-text); white-space: nowrap; font-variant-numeric: lining-nums; }
+  html[lang='ar'] .pl-km { font-family: var(--sans); font-size: 1.15rem; font-weight: 700; }
+  strong { color: var(--ink); font-size: 1.05rem; }
+  .pl-min { margin-inline-start: 10px; font-size: 0.88rem; color: var(--muted); white-space: nowrap; }
+  li p { margin: 2px 0 0; font-size: 0.94rem; }
+  .pl-links { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; margin: 0; grid-column: 1 / -1; }
+  @media (min-width: 900px) { .pl { grid-template-columns: 1fr 1fr; gap: 28px 64px; align-items: start; } }
+</style>

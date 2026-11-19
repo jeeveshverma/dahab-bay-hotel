@@ -1,0 +1,72 @@
+---
+/**
+ * "From the mountain to the water": a cross-section of the hotel's plot, drawn west (the
+ * mountain) to east (the gulf). It is a diagram of the order things come in, not a survey: the
+ * heights and widths are not to scale. The drawing always reads mountain-left, sea-right, as on
+ * a map with north at the top; in Arabic only the labels change.
+ */
+import { useT, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const { t } = useT(lang);
+const labels: [number, string, string][] = [
+  [110, t('section.mountain'), 'top'], [262, t('section.road'), 'bot'], [372, t('section.rooms'), 'top'], [432, t('section.pool'), 'bot'],
+  [520, t('section.restaurant'), 'top'], [650, t('section.beach'), 'bot'], [770, t('section.reef'), 'top'], [880, t('section.sea'), 'bot'],
+];
+---
+<figure class="sec">
+  <div class="sec-scroll">
+    <svg viewBox="0 0 1000 362" role="img" aria-label={t('section.alt')} direction="ltr">
+      <!-- sky, sun rising in the east -->
+      <circle class="sun" cx="930" cy="120" r="22" />
+      <path class="far" d="M840 196l30-10 26 6 30-12 34 8 40-6v10H840z" />
+      <!-- the mountain -->
+      <path class="mtn" d="M0 250V110l40-46 34 30 30-52 44 60 26-22 36 70 30 60 20 40z" />
+      <path class="mtn-l" d="M74 94l14 40M104 42l10 60 24 30M178 80l-6 50" />
+      <!-- ground: road, plot, beach, sloping to the water -->
+      <path class="ground" d="M0 250h300l300 4 90 10 60 14v52H0z" />
+      <path class="road" d="M236 247h54" />
+      <!-- room blocks either side of the courtyard, the pool between -->
+      <g class="bld">
+        <path d="M318 250v-56h46v56M318 222h46M326 204h8M346 204h8M326 232h8M346 232h8" />
+        <path d="M402 250v-56h46v56M402 222h46M410 204h8M430 204h8M410 232h8M430 232h8" />
+        <path d="M492 252v-34h58v34M492 218l-6-8h70l-6 8M502 230h14v14h-14zM526 230h14v14h-14z" />
+      </g>
+      <path class="water" d="M370 251h26v6h-26z" />
+      <!-- the beach shelter, a hammock, a palm -->
+      <g class="bld">
+        <path d="M612 256v-26M664 262v-30M604 230l34-12 34 14" />
+        <path d="M688 266v-16M714 271v-16M688 254q13 12 26 4" />
+        <path d="M586 254v-30M586 224q-12-8-18 0M586 224q12-8 18 0M586 224q-4-12-14-10M586 224q4-12 14-10" />
+      </g>
+      <!-- the sea, with the reef below the surface -->
+      <path class="sea" d="M740 276q14-4 28 0t28 0 28 0 28 0 28 0 28 0 28 0 28 0 28 0 8 0v54H740z" />
+      <path class="reef" d="M752 300q6-12 14-4 4-10 12-2 6-8 12 2 8-6 10 6 8-4 8 8h-70q-2-6 2-10z" />
+      {labels.map(([x, text, pos]) => (
+        <g class:list={['lab', pos]}>
+          <path d={pos === 'top' ? `M${x} 30v${x === 110 ? 16 : x === 770 ? 262 : 158}` : `M${x} 340v-${x === 262 ? 86 : x === 432 ? 78 : x === 650 ? 70 : 54}`} />
+          <text x={x} y={pos === 'top' ? 22 : 356} text-anchor="middle">{text}</text>
+        </g>
+      ))}
+      <text class="far-t" x="920" y="176" text-anchor="middle">{t('section.far')}</text>
+    </svg>
+  </div>
+</figure>
+<style>
+  .sec { margin: 0; }
+  .sec-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); direction: ltr; }
+  svg { width: 100%; min-width: 760px; height: auto; display: block; overflow: visible; }
+  .sun { fill: var(--coral); }
+  .far { fill: var(--taupe); opacity: 0.35; }
+  .mtn { fill: #c9764f; opacity: 0.9; }
+  .mtn-l { fill: none; stroke: #8a4a2c; stroke-width: 1.5; opacity: 0.5; stroke-linecap: round; }
+  .ground { fill: var(--cream-deep); }
+  .road { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; }
+  .bld { fill: var(--paper); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  .water { fill: var(--gold-light); stroke: var(--gold); stroke-width: 1.5; }
+  .sea { fill: var(--gold); opacity: 0.85; }
+  .reef { fill: var(--coral); opacity: 0.9; }
+  .lab path { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 2 4; opacity: 0.55; fill: none; }
+  .lab text, .far-t { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--ink); }
+  .far-t { font-weight: 500; fill: var(--muted); font-size: 12px; }
+</style>

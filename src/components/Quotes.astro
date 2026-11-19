@@ -1,0 +1,47 @@
+---
+/** Guests' own lines from their Google reviews, with the Google score beside them. */
+import { useT, digits, type Lang } from '../i18n';
+import { SITE } from '../data/site';
+import { REVIEWS } from '../data/reviews';
+import Icon from './Icon.astro';
+interface Props { lang: Lang; num?: string }
+const { lang, num } = Astro.props;
+const { t } = useT(lang);
+const g = SITE.scores.google;
+---
+<section class="section qt" id="reviews">
+  <div class="wrap qt-in">
+    <div class="section-head rv">
+      {num && <span class="num">{num}</span>}
+      <h2>{t('reviews.title')}</h2>
+      <a class="qt-score" href={SITE.googleReviewsUrl} target="_blank" rel="noopener">
+        <span class="qt-n">{digits(g.score, lang)}</span>
+        <span><b>{t('reviews.google')} · {t('reviews.outOf', { n: digits(g.outOf, lang) })}</b><small>{t('reviews.count', { n: digits(g.count, lang) })} <Icon name="arrowUpRight" size={13} /></small></span>
+      </a>
+    </div>
+    <ul class="qt-list">
+      {REVIEWS.map((r, i) => (
+        <li class={`rv rv-d${(i % 3) + 1}`}>
+          <blockquote lang={r.lang} dir={r.lang === 'ar' ? 'rtl' : 'ltr'}>{r.text}</blockquote>
+          <p><bdi>{r.name}</bdi> · {r.when[lang]}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+<style>
+  .qt { background: var(--night); color: var(--cream); }
+  .qt h2 { color: var(--cream); }
+  .qt .num { color: var(--gold-light); }
+  .qt-in { display: grid; gap: 8px; }
+  .qt-score { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--cream); margin-top: 8px; }
+  .qt-n { font-family: var(--display); font-size: 3.4rem; line-height: 1; color: var(--gold-light); font-weight: 600; }
+  .qt-score span:last-child { display: grid; line-height: 1.3; }
+  .qt-score small { color: rgba(243, 238, 228, 0.7); display: inline-flex; align-items: center; gap: 4px; }
+  .qt-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .qt-list li { padding-block: 20px; border-top: 1px solid rgba(255, 255, 255, 0.16); }
+  .qt-list blockquote { margin: 0; font-family: var(--display); font-size: clamp(1.3rem, 2.6vw, 1.6rem); line-height: 1.3; color: var(--cream); }
+  .qt-list blockquote[lang='en'] { font-family: 'Cormorant Garamond', Georgia, serif; }
+  .qt-list p { margin: 8px 0 0; font-size: 0.86rem; color: rgba(243, 238, 228, 0.7); }
+  @media (min-width: 960px) { .qt-in { grid-template-columns: 1fr 1.6fr; gap: 72px; align-items: start; } .qt-in .section-head { position: sticky; top: calc(var(--header-h) + 24px); margin: 0; } .qt-list li:first-child { border-top: 0; padding-top: 0; } }
+</style>

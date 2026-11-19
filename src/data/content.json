@@ -1,0 +1,29 @@
+{
+ "rooms": [
+  { "id": "double-sea-view", "price": null, "count": 2 },
+  { "id": "family-sea-view", "price": null, "count": 1 },
+  { "id": "deluxe-double", "price": null, "count": 2 },
+  { "id": "single", "price": null, "count": 2 },
+  { "id": "triple", "price": null, "count": 2 },
+  { "id": "quadruple", "price": null, "count": 2 },
+  { "id": "economy-double", "price": null, "count": 2 },
+  { "id": "family-studio", "price": null, "count": 1 },
+  { "id": "apartment", "price": null, "count": 1 }
+ ],
+ "contact": {
+  "phone": "+20 109 007 1183",
+  "whatsapp": "+20 109 007 1183"
+ },
+ "scores": {
+  "google": { "score": "4.0", "count": 970 },
+  "booking": { "score": "7.6", "count": 78 }
+ },
+ "reviews": [
+  { "name": "Roman Sulz", "text": "It's tucked between the beach and the mountains, which creates this really peaceful, relaxing vibe. It's away from the busy parts of Dahab, so it feels like a true escape.", "when": { "en": "Google review", "ar": "تقييم على Google" } },
+  { "name": "Kimberly Shamey", "text": "The highlight was the delicious Egyptian breakfast in the morning and the private beach with a hammock.", "when": { "en": "Google review", "ar": "تقييم على Google" } },
+  { "name": "Diana ElSayegh", "text": "The views are breathtaking, offering both a sea view and mountain views. If you're looking for a peaceful place to work away from the hustle, this is it.", "when": { "en": "Google review", "ar": "تقييم على Google" } },
+  { "name": "Mohamed Elsholkami", "text": "I really enjoyed watching the sunrise and sunset while sitting in the cafe they have set up in front of the sea.", "when": { "en": "Google review", "ar": "تقييم على Google" } },
+  { "name": "Azra Fakhruddin", "text": "Staff very polite and helpful and hospitable. Their cafe on the beach is great too!", "when": { "en": "Google review", "ar": "تقييم على Google" } },
+  { "name": "Adam Hassan", "text": "Behind you is the mountains and the sea in front of you: 15 meters and you are on the beach.", "when": { "en": "Google review", "ar": "تقييم على Google" } }
+ ]
+}

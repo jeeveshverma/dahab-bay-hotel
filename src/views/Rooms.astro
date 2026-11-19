@@ -1,0 +1,47 @@
+---
+import Layout from '../components/Layout.astro';
+import SearchBox from '../components/SearchBox.astro';
+import Availability from '../components/Availability.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import { useT, type Lang } from '../i18n';
+import { waUrl } from '../lib/wa';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const { t } = useT(lang);
+---
+<Layout lang={lang} page="rooms" title={t('meta.rooms.title')} desc={t('meta.rooms.desc')}>
+  <section class="rooms-head">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">{t('nav.rooms')}</span>
+        <h1>{t('sections.rooms')}</h1>
+        <p class="lead">{t('rooms.intro')}</p>
+      </div>
+      <SearchBox lang={lang} id="search" />
+    </div>
+  </section>
+  <Availability lang={lang} searchId="search" />
+  <section class="section bath">
+    <div class="wrap bath-in">
+      <div class="bath-text rv">
+        <h2>{t('sections.beach')}</h2>
+        <p class="lead">{t('beach.text')}</p>
+        <a class="btn btn-wa" href={waUrl(t('enquire.waIntro'))} target="_blank" rel="noopener"><Icon name="whatsapp" /> {t('hero.cta')}</a>
+      </div>
+      <div class="bath-photos">
+        <div class="frame rv"><Img id="beach-shore" lang={lang} ratio="4 / 5" sizes="(min-width: 960px) 26vw, 50vw" /></div>
+        <div class="frame rv rv-d2"><Img id="beach-tea" lang={lang} ratio="4 / 5" sizes="(min-width: 960px) 26vw, 50vw" /></div>
+      </div>
+    </div>
+  </section>
+</Layout>
+<style>
+  .rooms-head { padding-top: calc(var(--header-h) + 32px); padding-bottom: 28px; }
+  .rooms-head .section-head { margin-bottom: 24px; }
+  .bath-in { display: grid; gap: 32px; }
+  .bath-text { display: grid; gap: 14px; justify-items: start; }
+  .bath-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+  .bath-photos > :nth-child(2) { margin-top: 48px; }
+  @media (min-width: 960px) { .bath-in { grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: center; } }
+</style>

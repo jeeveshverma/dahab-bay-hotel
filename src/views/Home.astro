@@ -1,0 +1,196 @@
+---
+import Layout from '../components/Layout.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import Sunrise from '../components/Sunrise.astro';
+import Section from '../components/Section.astro';
+import Quotes from '../components/Quotes.astro';
+import Places from '../components/Places.astro';
+import SearchBox from '../components/SearchBox.astro';
+import Property from '../components/Property.astro';
+import Availability from '../components/Availability.astro';
+import { PHOTOS, photo } from '../data/photos';
+import { getImage } from 'astro:assets';
+import heroSrc from '../assets/photos/beach-hammock.jpg';
+import { path, useT, digits, type Lang } from '../i18n';
+import { waUrl } from '../lib/wa';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const { t, list } = useT(lang);
+const wa = waUrl(t('enquire.waIntro'));
+const HERO_SIZES = '100vw';
+const heroImg = await getImage({ src: heroSrc, widths: [480, 720, 1080, 1280], format: 'avif', quality: 62 });
+const practical = list<[string, string]>('practical.items');
+// the gallery: the strongest ten first (big, four beside, five below), then every other photo
+const lead = ['front', 'ds-sea', 'beach-swings', 'pool', 'rest-hall', 'fs-sea', 'beach-shade', 'court-above', 'dd-beds', 'beach-tea'];
+const mosaic = [...lead, ...PHOTOS.map((p) => p.id).filter((id) => !lead.includes(id) && id !== 'beach-hammock')];
+const n = (i: number) => digits(String(i).padStart(2, '0'), lang);
+---
+<Layout lang={lang} page="home" title={t('meta.home.title')} desc={t('meta.home.desc')} overHero preload={{ href: heroImg.src, srcset: heroImg.srcSet.attribute, sizes: HERO_SIZES }}>
+  <!-- Hero: the hammock at sunrise, the sentence that says where this is -->
+  <section class="hero" id="top">
+    <div class="hero-photo">
+      <Img id="beach-hammock" lang={lang} priority sizes={HERO_SIZES} widths={[480, 720, 1080, 1280]} quality={62} position="50% 60%" />
+    </div>
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <p class="eyebrow hero-eyebrow">{t('hero.eyebrow')}</p>
+      <h1 class="hero-title">{t('hero.title')}</h1>
+      <div class="hero-cta">
+        <a class="btn btn-lg hero-book" href="#availability">{t('bk.checkAvail')} <Icon name="arrowRight" size={18} class="rtl-flip" /></a>
+        <a class="btn btn-ghost hero-wa" href={wa} target="_blank" rel="noopener"><Icon name="whatsapp" /> {t('hero.cta')}</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap sb-wrap"><SearchBox lang={lang} id="search" /></div>
+
+  <Property lang={lang} mosaic={mosaic} />
+
+  <Sunrise lang={lang} />
+
+  <Availability lang={lang} searchId="search" />
+
+  <!-- From the mountain to the water: the plot in section -->
+  <section class="section secsec" id="place">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="num">{n(1)}</span>
+        <h2>{t('sections.section')}</h2>
+        <p class="lead">{t('section.text')}</p>
+      </div>
+      <div class="rv"><Section lang={lang} /></div>
+      <div class="pair">
+        <div class="rv"><Img id="mountain" lang={lang} ratio="4 / 3" sizes="(min-width: 960px) 46vw, 100vw" /><p class="caption">{photo('mountain').caption![lang]}</p></div>
+        <div class="rv rv-d2"><Img id="sea-sunrise" lang={lang} ratio="4 / 3" sizes="(min-width: 960px) 46vw, 100vw" /><p class="caption">{photo('sea-sunrise').caption![lang]}</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The beach -->
+  <section class="section trio" id="beach">
+    <div class="wrap trio-in">
+      <div class="trio-photo trio-a rv"><Img id="beach-swings" lang={lang} ratio="3 / 4" sizes="(min-width: 960px) 30vw, 60vw" /><p class="caption">{photo('beach-swings').caption![lang]}</p></div>
+      <div class="trio-text rv rv-d1">
+        <span class="num">{n(2)}</span>
+        <h2>{t('sections.beach')}</h2>
+        <p class="lead">{t('beach.text')}</p>
+      </div>
+      <div class="trio-photo trio-b rv rv-d2"><Img id="beach-tea" lang={lang} ratio="4 / 3" sizes="(min-width: 960px) 38vw, 80vw" /><p class="caption">{photo('beach-tea').caption![lang]}</p></div>
+    </div>
+  </section>
+
+  <!-- Breakfast, the restaurant, the beach café -->
+  <section class="section food" id="restaurant">
+    <div class="wrap food-in">
+      <div class="food-text rv">
+        <span class="num">{n(3)}</span>
+        <h2>{t('sections.food')}</h2>
+        <p class="lead">{t('food.text')}</p>
+      </div>
+      <div class="food-photos">
+        <div class="rv"><Img id="rest-hall" lang={lang} ratio="4 / 3" sizes="(min-width: 960px) 34vw, 100vw" /><p class="caption">{photo('rest-hall').caption![lang]}</p></div>
+        <div class="rv rv-d2"><Img id="rest-window" lang={lang} ratio="4 / 3" sizes="(min-width: 960px) 34vw, 100vw" /><p class="caption">{photo('rest-window').caption![lang]}</p></div>
+      </div>
+    </div>
+  </section>
+
+  <Quotes lang={lang} num={n(4)} />
+
+  <!-- Dahab from here -->
+  <section class="section dhb" id="dahab">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="num">{n(5)}</span>
+        <h2>{t('sections.dahab')}</h2>
+        <p class="lead">{t('dahab.intro')}</p>
+      </div>
+      <div class="rv"><Places lang={lang} compact /></div>
+      <p class="rv dhb-more"><a class="btn btn-ghost" href={path(lang, 'dahab')}>{t('nav.dahab')} <Icon name="arrowRight" size={18} class="rtl-flip" /></a></p>
+    </div>
+  </section>
+
+  <!-- The practical part -->
+  <section class="section pract" id="rules">
+    <div class="wrap pract-in">
+      <div class="section-head rv"><span class="num">{n(6)}</span><h2>{t('sections.practical')}</h2><p class="lead">{t('practical.intro')}</p></div>
+      <dl class="pract-list rv rv-d1">
+        {practical.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+      </dl>
+    </div>
+  </section>
+
+  <section class="section endcta">
+    <div class="wrap endcta-in">
+      <h2>{t('bk.checkAvail')}</h2>
+      <p class="lead">{t('bk.endLead')}</p>
+      <p><a class="btn btn-lg" href="#search">{t('bk.search')} <Icon name="arrowRight" size={18} class="rtl-flip" /></a> <a class="btn btn-ghost" href={wa} target="_blank" rel="noopener"><Icon name="whatsapp" /> {t('hero.cta')}</a></p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero { position: relative; min-height: 82svh; display: grid; align-items: end; color: var(--cream); isolation: isolate; overflow: hidden; }
+  .hero-photo { position: absolute; inset: 0; z-index: -2; }
+  .hero-photo :global(.photo) { height: 100%; border-radius: 0; }
+  .hero-photo :global(img) { height: 100%; width: 100%; object-fit: cover; animation: pan 30s var(--ease) both; transform-origin: 60% 45%; }
+  @keyframes pan { from { transform: scale(1.08); } to { transform: scale(1); } }
+  .hero-veil { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(12, 42, 56, 0.6) 0%, rgba(12, 42, 56, 0.12) 28%, rgba(12, 42, 56, 0.3) 55%, rgba(12, 42, 56, 0.9) 100%); }
+  .hero-in { padding-top: calc(var(--header-h) + 24px); padding-bottom: 96px; display: grid; gap: 12px; }
+  .hero-eyebrow { color: var(--gold-pale); text-shadow: 0 1px 8px rgba(0,0,0,.7); }
+  .hero-title { color: var(--cream); font-size: clamp(2.4rem, 9.6vw, 5rem); max-width: 13em; text-wrap: balance; text-shadow: 0 2px 10px rgba(0,0,0,.4); }
+  html[lang='ar'] .hero-title { font-size: clamp(2.1rem, 8.4vw, 4.2rem); max-width: 14em; }
+  .hero-cta { display: grid; gap: 8px; margin-top: 8px; }
+  .hero-book { background: var(--coral); border-color: var(--coral); color: #fff; }
+  .hero-book:hover { background: #c9562d; }
+  .hero-wa { color: var(--cream); text-decoration-color: var(--gold-light); justify-content: start; justify-self: start; padding-inline: 0; }
+  @media (min-width: 560px) { .hero-cta { grid-auto-flow: column; justify-content: start; align-items: center; gap: 24px; } }
+  @media (prefers-reduced-motion: reduce) { .hero-photo :global(img) { animation: none; } }
+  @media (min-width: 960px) { .hero { min-height: 86vh; } .hero-in { padding-bottom: 128px; } .hero-title { font-size: clamp(3.2rem, 5.4vw, 5.6rem); } }
+  .sb-wrap { margin-top: -52px; position: relative; z-index: 4; }
+
+  .secsec { background: var(--cream); }
+  .pair { display: grid; gap: 28px; margin-top: 40px; align-items: start; }
+  .pair .caption, .trio-photo .caption, .food-photos .caption { margin: 12px 0 0; }
+  @media (min-width: 960px) { .pair { grid-template-columns: 1fr 1fr; gap: 40px; } .pair > :nth-child(2) { margin-top: 56px; } }
+
+  .trio { background: var(--paper); }
+  .trio-in { display: grid; gap: 32px; }
+  .trio-a { width: 70%; }
+  .trio-b { width: 88%; margin-inline-start: auto; }
+  .trio-text, .food-text { display: grid; gap: 12px; max-width: 34em; align-content: start; }
+  .trio-text .num, .food-text .num { display: flex; align-items: center; gap: 12px; }
+  .trio-text .num::after, .food-text .num::after { content: ''; height: 1px; width: 48px; background: var(--gold); opacity: 0.7; }
+  @media (min-width: 640px) and (max-width: 959px) { .trio-in { grid-template-columns: 5fr 6fr; gap: 32px 40px; align-items: center; } .trio-a { width: 100%; } .trio-b { grid-column: 1 / -1; width: 72%; } }
+  @media (min-width: 960px) {
+    .trio-in { grid-template-columns: repeat(12, 1fr); align-items: center; }
+    .trio-a { grid-column: 1 / 5; width: 100%; }
+    .trio-text { grid-column: 5 / 9; padding-inline: 24px; }
+    .trio-b { grid-column: 9 / 13; width: 100%; margin-top: 120px; }
+  }
+
+  .food { background: var(--cream); }
+  .food-in { display: grid; gap: 28px; }
+  .food-photos { display: grid; gap: 24px; align-items: start; }
+  @media (min-width: 640px) { .food-photos { grid-template-columns: 1fr 1fr; } .food-photos > :nth-child(2) { margin-top: 40px; } }
+  @media (min-width: 960px) { .food-in { grid-template-columns: 1fr 2fr; gap: 64px; align-items: start; } }
+
+  .dhb { background: var(--paper); }
+  .dhb-more { margin: 20px 0 0; }
+  .dhb .btn-ghost { padding-inline: 0; }
+
+  .pract-in { display: grid; gap: 24px; }
+  .pract-list { margin: 0; display: grid; gap: 18px 32px; }
+  .pract-list div { border-top: 1px solid var(--line); padding-top: 12px; }
+  .pract-list dt { font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--ink); }
+  html[lang='ar'] .pract-list dt { font-family: var(--sans); font-size: 1.1rem; }
+  .pract-list dd { margin: 4px 0 0; color: var(--body); }
+  @media (min-width: 720px) { .pract-list { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 960px) { .pract-in { grid-template-columns: 1fr 2fr; gap: 64px; align-items: start; } .pract-in .section-head { margin: 0; } }
+
+  .endcta { background: var(--gold-pale); }
+  .endcta-in { display: grid; gap: 14px; justify-items: start; }
+  .endcta-in > * { max-width: 40rem; }
+  .endcta p:last-child { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; margin: 8px 0 0; }
+  .endcta .btn-ghost { padding-inline: 0; }
+</style>

@@ -1,0 +1,23 @@
+// The booking path end to end: four nights for two in the sea-view double, through the checkout to the WhatsApp link.   node scripts/flow.mjs [ar]
+import { chromium, webkit } from 'playwright';
+const BASE = process.env.BASE || 'http://127.0.0.1:4331/dahab-bay-hotel/';
+const pre = process.argv[2] === 'ar' ? 'ar/' : '';
+const b = await (process.env.ENGINE === 'webkit' ? webkit : chromium).launch();
+const page = await (await b.newContext({ viewport: { width: Number(process.env.W || 1280), height: 900 } })).newPage();
+const errs = []; page.on('pageerror', (e) => errs.push(String(e)));
+await page.goto(`${BASE}${pre}rooms/?in=2026-12-01&out=2026-12-05&adults=2&children=1`, { waitUntil: 'networkidle' });
+console.log('summary:', await page.locator('[data-sum]').innerText());
+await page.selectOption('[data-room="single"]', '1');
+console.log('single for 3 warn:', await page.locator('[data-warn]').innerText());
+await page.selectOption('[data-room="single"]', '0');
+await page.selectOption('[data-room="family-sea-view"]', '1');
+await Promise.all([page.waitForURL(/enquire/), page.locator('[data-reserve]').click()]);
+console.log('checkout url:', page.url().replace(BASE, ''));
+await page.fill('[name=first]', 'Test'); await page.fill('[name=last]', 'Guest'); await page.fill('[name=phone]', '+44 7700 900123');
+await page.check('[name=pickup]'); await page.fill('[name=flight]', 'MS 21 · 14:30');
+await page.locator('.co-next').click();
+await page.waitForSelector('[data-step="3"]:not([hidden])');
+console.log('--- message ---\n' + (await page.locator('[data-msg]').innerText()));
+console.log('send href:', (await page.locator('[data-send]').getAttribute('href')).slice(0, 48));
+console.log('errors:', errs);
+await b.close();
